@@ -4,6 +4,7 @@ import org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.conf.WorkspaceMode;
 import org.deeplearning4j.nn.conf.layers.DenseLayer;
 import org.deeplearning4j.nn.conf.layers.OutputLayer;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
@@ -37,6 +38,8 @@ public class Main {
 
         IUpdater updater = new Nesterovs(initLearningRate);
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+                .inferenceWorkspaceMode(WorkspaceMode.SINGLE)
+                .trainingWorkspaceMode(WorkspaceMode.SINGLE)
                 .seed(seed)
                 .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
                 .updater(updater)
