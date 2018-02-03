@@ -36,6 +36,19 @@ public class Main {
         double initLearningRate = 0.006;
         int seed = 1234;
 
+        /*
+        Tested combinations for workspace modes
+
+        None        None        *
+        None        Single      *
+        None        Seperate    *
+        Single      None        *
+        Single      Single      *
+        Single      Seperate    *
+        Seperate    None        *
+        Seperate    Single      *
+        Seperate    Seperate    *
+         */
         IUpdater updater = new Nesterovs(initLearningRate);
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
                 .inferenceWorkspaceMode(WorkspaceMode.SINGLE)
